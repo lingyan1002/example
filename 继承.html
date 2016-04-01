@@ -1,0 +1,13 @@
+<script type="text/javascript">
+	function A(){
+  this.name:'aa';
+  this.get = function(){
+    return this.name;
+  };
+}
+function B(){
+  A.call(this);
+}
+var b = new B();
+console.log(b.get());
+</script>>

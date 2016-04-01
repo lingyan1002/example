@@ -1,0 +1,19 @@
+<body>
+gfdgfhfh
+<script>
+var bar={
+	name:'bar',
+	body:document.getElementsByTagName("body")[0],
+	greeting: function(){
+		console.log("hi"+this+":"+this.name);
+	},
+	anotherMethod: function(){
+		var self=this;
+		this.body.addEventListener("click", function(){
+			self.greeting();
+		});
+	}
+};
+bar.anotherMethod();
+</script>
+</body>

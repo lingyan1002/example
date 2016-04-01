@@ -1,0 +1,76 @@
+<head>
+    <meta content="text/html; charset=utf8" http-equiv="Content-Type" />     
+    <title></title>
+    <style type="text/css">
+    	#div1{position:absolute;
+    		display:none;
+    		width:200px;
+    		height:200px;
+    		left:200px;
+    		top:200px;
+    		background:yellow}    
+		#btn1{position:absolute;
+			left:50%;
+			top:50%;
+			width:60px;
+			height:30px;
+			margin-left:-30px;
+			margin-top:-15px;
+		}
+		#mbDIV {     
+			position: absolute;     
+			top: 0px;     
+			left: 0px;     
+			width: 100%;     
+			height: 100%;     
+			background:rgba(5, 5, 5, 0.5);
+		}  
+	</style>
+</head>
+<body>
+  <button id='btn'>点击</button>
+  <div id='mbDIV' style='display:none'></div>
+  <div id='div1'>弹出层
+  <button id='btn1'>关闭</button>
+  </div>
+  <script type="text/javascript">
+    var btn = document.getElementById('btn');
+    btn.onclick = function(){
+    	var div1 = document.getElementById('div1');
+    	div1.style.display='block';
+		document.getElementById('mbDIV').style.display='block';
+    }
+	var btn1 = document.getElementById('btn1');
+	btn1.onclick = function(){
+	    var div1 = document.getElementById('div1');
+	    div1.style.display='none';
+		document.getElementById('mbDIV').style.display='none';
+    }
+    var div1 = document.getElementById('div1');
+    var tHeight=20,lWidth=40;
+    div1.onmousedown = down;
+    function down(e){
+		var event = window.event || e;     
+		//tHeight = event.clientY  - parseInt(div1.style.top.replace(/px/,"")); 	
+		//lWidth  = event.clientX - parseInt(div1.style.left.replace(/px/,"")); 
+		console.log('ghtyh'+div1.style.top);    
+		div1.onmousemove = move;     
+		div1.onmouseup   = up;         
+    }
+	function move(e){
+		var event = window.event || e;     
+		var top = event.clientY - tHeight;     
+		var left = event.clientX - lWidth;     
+		//判断 top 和 left 是否超出边界     
+		top = top < 0 ? 0 : top;     
+	//	top = top > document.body.offsetHeight - 200 ? document.body.offsetHeight - 200 : top;     
+		left = left < 0 ? 0 : left;     
+		left = left > document.body.offsetWidth - 200 ? document.body.offsetWidth - 200 : left;   
+		div1.style.top  = top + "px";     
+		div1.style.left = left +"px";
+	}
+	function up(){
+		div1.onmousemove = null;
+	}
+  </script>
+</body>

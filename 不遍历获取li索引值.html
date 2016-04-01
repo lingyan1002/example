@@ -1,0 +1,26 @@
+<script>
+window.onload=init;
+  function init() {
+    var trs=document.getElementsByTagName('ul')[0];
+    if(trs.addEventListener){
+        trs.addEventListener('click', function (e) {
+          alert(([].indexOf.call(e.target.parentNode.childNodes, e.target)+1)/2-1);
+        },false);
+    }else if(trs.attachEvent){
+        trs.attachEvent('onclick', function (e) {
+          alert(e.srcElement.innerHTML);
+        });
+    }else{
+        trs.onclick = function(e){
+            alert(e.target.innerHTML);
+        }
+    }
+  }
+</script>
+<body>
+<ul>
+<li index='0'>11</li>
+<li index='1'>22</li>
+<li index='2'>33</li>
+</ul>
+</body>

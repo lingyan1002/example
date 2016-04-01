@@ -1,0 +1,12 @@
+<body>
+<script>
+function fn(a){//函数声明比变量的声明有更高的优先级
+  console.log(a);
+  var a =2;
+  function a(){    
+  }
+  console.log(a);
+}
+fn(1);
+</script>
+</body>
