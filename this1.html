@@ -1,0 +1,20 @@
+<script>
+var context = 'global';
+var obj = {
+	context:"object",
+	method:function(){
+		console.log(this+":"+this.context);
+		function f(){
+			var context = "function";
+			console.log(this+":"+this.context);
+		};
+		f();
+		(function(){
+			var context = 'function';
+			console.log(this+":"+this.context);
+
+		})()
+	}
+};
+obj.method();
+</script>
