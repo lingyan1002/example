@@ -3,24 +3,26 @@ window.onload=init;
   function init() {
     var trs=document.getElementsByTagName('ul')[0];
     if(trs.addEventListener){
-        trs.addEventListener('click', function (e) {
-          alert(([].indexOf.call(e.target.parentNode.childNodes, e.target)+1)/2-1);
+        trs.addEventListener('click', function (e) { 
+     //   alert(e.target.getAttribute("data-index"));       //可通过getAttribute()获取自定义索引的值
+          console.log(e.target.parentNode.childNodes);
+          alert(([].indexOf.call(e.target.parentNode.childNodes, e.target)+1)/2);
         },false);
     }else if(trs.attachEvent){
         trs.attachEvent('onclick', function (e) {
-          alert(e.srcElement.innerHTML);
+          alert(([].indexOf.call(e.srcElement.parentNode.childNodes, e.srcElement)+1)/2)
         });
     }else{
         trs.onclick = function(e){
-            alert(e.target.innerHTML);
+            alert(([].indexOf.call(e.target.parentNode.childNodes, e.target)+1)/2);
         }
     }
   }
 </script>
 <body>
 <ul>
-<li index='0'>11</li>
-<li index='1'>22</li>
-<li index='2'>33</li>
+<li data-index='1'>11</li>
+<li data-index='2'>22</li>
+<li data-index='3'>33</li>
 </ul>
 </body>

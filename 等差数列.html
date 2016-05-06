@@ -1,0 +1,31 @@
+<script type="text/javascript">
+	function calcAPLength(intAr){
+		if (intAr.length <= 1) {
+			return intAr.length;
+		}
+  intAr.sort(function(a,b){
+    return a-b;
+  });
+		var max = 1;
+		var length = intAr.length;
+		for (var i = 0; i < intAr.length - max; i++) {
+			for (var j = i + 1; j < intAr.length; j++) {
+				var temp = 1;
+				var distance = intAr[j] - intAr[i];
+				var cur = distance + intAr[i];
+				var k = i + 1;
+				while (k < length && cur <= intAr[length - 1]) {
+					if (intAr[k] == cur) {
+						temp++;
+						cur += distance;
+					}
+					k++;
+				}
+				max = Math.max(temp, max);
+			}
+		}
+		return max;
+	}
+var a = [2,3,4,6,8,9,10];
+console.log(calcAPLength(a));
+</script>

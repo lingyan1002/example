@@ -1,0 +1,25 @@
+<script type="text/javascript">
+	/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findPeakElement = function(nums) {
+    if(nums.length == 1){
+        return 0;
+    }
+    var i = 0;
+    var j = nums.length;
+    var mid = 0;
+    while(i <= j){
+        mid = Math.floor((i+j)/2);
+        if((mid == 0 || nums[mid] > nums[mid-1]) && (mid == nums.length -1 || nums[mid] > nums[mid+1])){
+            return mid;
+        }else if(mid > 0 && nums[mid-1] > nums[mid]){
+            j = mid - 1;
+        }else{
+            i = mid + 1;
+        }
+    }
+    return mid;
+};
+</script>

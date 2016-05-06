@@ -1,0 +1,39 @@
+<script type="text/javascript">
+	/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrder = function(root) {
+    var result = [];
+    var height = getHeight(root);
+    for(var i = 0; i < height; i++){
+        var tmp = [];
+        result.push(tmp);
+    }
+    traversal(root,result,0);
+    return result;
+};
+function getHeight(root){
+    if(root == null){
+        return 0;
+    }
+    var left = getHeight(root.left)+1;
+    var right = getHeight(root.right)+1;
+    return left>right?left:right;
+}
+function traversal(root,result,level){
+    if(root == null){
+        return;
+    }
+    result[level].push(root.val);
+    traversal(root.left,result,level+1);
+    traversal(root.right,result,level+1);
+}
+</script>

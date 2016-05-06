@@ -1,0 +1,68 @@
+<script type="text/javascript">
+//递归
+	/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var postorderTraversal = function(root) {
+    var result = [];
+    return postorder(root,result);
+};
+function postorder(root,a){
+    if(root !== null){
+        postorder(root.left,a);
+        postorder(root.right,a);
+        a.push(root.val);
+    }
+    return a;
+}
+
+
+
+//迭代
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var postorderTraversal = function(root) {
+    if(root == null){
+        return [];
+    }
+    var result = [];
+    var pre = null;
+    var a = [];
+    a.push(root);
+    var p = root;
+    while(a.length !== 0){
+        if((p.left == null && p.right == null) || (pre !== null && (pre == p.left || pre == p.right))){
+            var tmp = a.pop();
+            result.push(tmp.val);
+            pre = tmp;
+        }else{
+            if(p.right !== null){
+                a.push(p.right);
+            }
+            if(p.left !== null){
+                a.push(p.left);
+            }
+        }
+        p = a[a.length-1];
+    }
+    return result;
+};
+
+</script>

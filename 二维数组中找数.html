@@ -1,0 +1,25 @@
+<script type="text/javascript">
+	function arr(a,row,col,num){
+  if(a[row-1][col-1] < num){
+    return false;
+  }
+  var j = col-1;
+  var i = 0;
+  while(i < row && j >= 0){
+    if(a[i][j] == num){
+      return true;
+    }else if(a[i][j] < num){
+      i++;
+    }else{
+      j--;
+    }
+  }
+  return false;
+  
+}
+var a = [];
+a.push([1,2,3]);
+a.push([4,5,6]);
+a.push([7,8,10]);
+alert(arr(a,3,3,5));
+</script>

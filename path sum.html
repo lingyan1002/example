@@ -1,0 +1,33 @@
+<script type="text/javascript">
+	/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} sum
+ * @return {boolean}
+ */
+var hasPathSum = function(root, sum) {
+    return pathSum(root,sum,0);
+};
+function pathSum(root,sum,current){
+    if(root == null){
+        return false;
+    }
+    current += root.val;
+    if(root.left == null && root.right == null){
+        if(sum == current){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    var left = pathSum(root.left,sum,current);
+    var right = pathSum(root.right,sum,current);
+    return left||right;
+}
+</script>

@@ -1,0 +1,22 @@
+<script type="text/javascript">
+function oddEvenArray(a){
+  var i = 0;
+  var j = a.length-1;
+  while(i < j){
+    while(a[i]%2 == 1 && i < j){//取余改成位运算效率更高
+      i++;
+    }
+    while(a[j]%2 == 0 && j > i){
+      j--;
+    }
+    if(i < j){
+    	var tmp = a[i];
+	    a[i] = a[j];
+	    a[j] = tmp;
+	    i++;//此处自增和自减代码可写可不写，不写的的时候会在下一次循环时执行
+	    j--;
+    }   
+  }
+  return a;
+}
+</script>

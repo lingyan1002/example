@@ -1,0 +1,79 @@
+<script type="text/javascript">
+//递归
+	/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isSymmetric = function(root) {
+    if(root == null){
+        return true;
+    }
+    return symmetric(root.left,root.right);
+};
+function symmetric(left,right){
+    if(left == null && right == null){
+        return true;
+    }else if(left == null || right == null){
+        return false;
+    }else{
+        var a1 = left.val == right.val;
+        var a2 = symmetric(left.left,right.right);
+        var a3 = symmetric(left.right,right.left);
+        return a1&&a2&&a3;
+    }
+    
+}
+
+
+//迭代
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isSymmetric = function(root) {
+    if(root == null){
+        return true;
+    }
+    if(root.left == null && root.right == null){
+        return true;
+    }else if(root.left == null || root.right == null){
+        return false;
+    }
+    var a1 = [];
+    var a2 = [];
+    a1.push(root.left);
+    a2.push(root.right);
+    while(a1.length !== 0 && a2.length !== 0){
+        var tmp1 = a1.pop();
+        var tmp2 = a2.pop();
+        if((tmp1 == null && tmp2 !== null) || (tmp1 !== null && tmp2 == null)){
+            return false;
+        }
+        if(tmp1 !== null && tmp2 !== null){
+            if(tmp1.val !== tmp2.val){
+                return false;
+            }else{
+                a1.push(tmp1.left);
+                a1.push(tmp1.right);
+                a2.push(tmp2.right);
+                a2.push(tmp2.left);
+            }
+        }
+    }
+    return true;
+};
+</script>

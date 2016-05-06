@@ -3,15 +3,15 @@ var context = 'global';
 var obj = {
 	context:"object",
 	method:function(){
-		console.log(this+":"+this.context);
+		console.log(this+":"+this.context);//[object Object]:object
 		function f(){
 			var context = "function";
-			console.log(this+":"+this.context);
+			console.log(this+":"+this.context);//[object Window]:global
 		};
 		f();
 		(function(){
 			var context = 'function';
-			console.log(this+":"+this.context);
+			console.log(this+":"+this.context);//[object Window]:global
 
 		})()
 	}

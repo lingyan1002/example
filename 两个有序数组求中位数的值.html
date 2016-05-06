@@ -1,0 +1,88 @@
+<script type="text/javascript">
+//二分法 递归
+function search(a,b,index){
+  if(a.length > index){
+    a = a.slice(0,index+1);
+  }
+  if(b.length > index){
+    b = b.slice(0,index+1);
+  }
+  if(a.length == 0){
+    return b[index];
+  }
+  if(b.length == 0){
+    return a[index];
+  }
+  if(index == 0){
+    return a[0]<b[0]?a[0]:b[0];
+  }
+  var mida = a.length >> 1;
+  var midb = b.length >> 1;
+  var num = mida+midb+1;
+  if(a[mida] < b[midb]){
+    if(index < num){
+      b.splice(midb,b.length-midb);
+      return search(a,b,index);
+    }else{
+      a.splice(0,mida+1);
+      return search(a,b,index-mida-1);
+    }
+  }else{
+    if(index < num){
+      a.splice(mida,a.length-mida);
+      return search(a,b,index);
+    }else{
+      b.splice(0,midb+1);
+      return search(a,b,index-midb-1);
+    }
+  }
+}
+//循环
+/*function search(a,b,index){
+  var count = -1;
+  var i = 0, j = 0;
+  var flag;
+  if(index >= (a.length+b.length)){
+    return false;
+  }
+  while(count < index &&(i < a.length) && (j < b.length)){
+    if(a[i] < b[j]){
+      i++;
+      flag = true;
+    }else{
+      j++;
+      flag = false;
+    }
+    count++;
+  }
+  if(i >= a.length){
+    while(count < index){
+      j++;
+      flag = false;
+      count++;
+    }    
+  }
+  if(j >= b.length){
+    while(count < index){
+      i++;
+      flag = true;
+      count++;
+    }       
+  }
+  if(count == index){
+    return flag?a[i-1]:b[j-1];
+  }
+}
+*/
+var a = [1];
+var b = [2,3,4];
+var index = Math.floor((a.length+b.length)/2);;
+if((a.length+b.length)%2 == 1){
+  alert(search(a,b,index));
+}else{
+	var a1 = a.slice(0), b1 = b.slice(0);
+	var m = search(a,b,index);
+	var n = search(a1,b1,index-1);
+	alert((m+n)/2);
+}
+</script>

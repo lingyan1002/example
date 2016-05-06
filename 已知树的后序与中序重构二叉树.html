@@ -1,0 +1,39 @@
+<script type="text/javascript">
+	/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {number[]} inorder
+ * @param {number[]} postorder
+ * @return {TreeNode}
+ */
+var buildTree = function(inorder, postorder) {
+    var postlen = postorder.length;
+    var inlen = inorder.length;
+    if(postlen == 0 || inlen == 0){
+        return null;
+    }
+    return build(postorder, 0, postlen-1, inorder, 0, inlen-1);
+};
+function build(postorder,a,b,inorder,m,n){
+    if(a>b || m>n){
+        return null;
+    }
+    var root = new TreeNode();
+    root.val = postorder[b];
+    var num = 0;
+    for(var i = m; i <= n; i++){
+        if(inorder[i] == postorder[b]){
+            break;
+        }
+        num++;
+    }
+    root.left = build(postorder, a, a+num-1, inorder, m, i-1);
+    root.right = build(postorder, a+num, b-1, inorder, i+1, n);
+    return root;
+}
+</script>

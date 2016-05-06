@@ -1,0 +1,24 @@
+<script type="text/javascript">
+function permutation(a,start){
+  if(a.length == 0){
+    return;
+  }
+  if(start == a.length-1){
+    console.log(a);
+    return;
+  }
+  else{
+    for(var begin = start; begin < a.length; begin++){
+      var tmp = a[begin];
+      a[begin] = a[start];
+      a[start] = tmp;
+      permutation(a, start+1);
+      tmp = a[begin];
+      a[begin] = a[start];
+      a[start] = tmp;
+    }
+  }
+}
+var  a = ['a','b','c'];
+permutation(a,0);
+</script>

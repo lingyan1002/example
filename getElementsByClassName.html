@@ -1,0 +1,20 @@
+<style type="text/css">
+	a{
+		color: red;
+	}
+	b{
+		font-size: 10px;
+	}
+</style>
+<div class="a">11</div>
+<div class="b">22</div>
+<div class="a b">33</div>
+<script type="text/javascript">
+	window.onload = function(){
+		var a = document.getElementsByClassName('a b');
+		alert(a.length);
+		for(var i = 0; i < a.length; i++){
+			alert(a[i].innerHTML);
+		}
+	}
+</script>

@@ -1,0 +1,82 @@
+<script type="text/javascript">
+	/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isBalanced = function(root) {
+    if(balance(root) == -1){
+        return false;
+    }
+    return true;
+};
+function balance(root){
+    if(root == null){
+        return 0;
+    }
+    var left = 0,right = 0;
+    var tmpleft = balance(root.left);
+    var tmpright = balance(root.right);
+    if(tmpleft == -1){
+        return -1;
+    }else{
+        left = tmpleft+1;
+    }
+    if(tmpright == -1){
+        return -1;
+    }else{
+        right = tmpright+1;
+    }
+    var dif = left > right?(left-right):(right-left);
+    if(dif>1){
+        return -1;
+    }
+    return left > right?left:right;
+}
+
+
+
+
+
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isBalanced = function(root) {
+    return balance(root);
+};
+function balance(root){
+    if(root == null){
+        return true;
+    }
+    var left = depth(root.left);
+    var right = depth(root.right);
+    var dif = left > right?left-right:right-left;
+    if(dif > 1){
+        return false;
+    }
+    return balance(root.left) && balance(root.right);
+}
+function depth(root){
+    if(root == null){
+        return 0;
+    }
+    var left = depth(root.left)+1;
+    var right = depth(root.right)+1;
+    return left > right? left:right;
+}
+</script>

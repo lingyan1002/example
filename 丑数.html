@@ -1,0 +1,32 @@
+<script type="text/javascript">
+function getUglyNumber(n){
+  if(n <= 0){
+    return;
+  }
+  var a = [];
+  a[0] = 1;
+  var count = 1;
+  var a2 = a;
+  var a3 = a;
+  var a5 = a;
+  var i = 0;
+  var j = 0;
+  var k = 0;
+  while(count < n){
+    var min = Math.min(a2[i]*2,a3[j]*3,a5[k]*5);
+    a.push(min);
+    if(a2[i]*2 == min){
+        i++;
+    }
+    if(a3[j]*3 == min){
+    	j++;
+    }
+    if(a5[k]*5 == min){
+    	k++;
+    }
+    count++;
+  }
+  return a[a.length-1]; 
+}
+getUglyNumber(6);
+</script>

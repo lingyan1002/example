@@ -1,0 +1,22 @@
+<script type="text/javascript">
+function josephuse(a,m){
+  var start = 0;
+  var n = 0;
+    for(var i = 0; i <= a.length; i++){
+    	if(i == a.length){
+    		i = 0;
+    	}
+      n++;
+      if(n == m){
+        a.splice(i,1);
+        n = 0;
+        i--;
+      }
+      if(a.length == 1){
+      	break;
+      }
+    }    
+  return a;
+}
+console.log(josephuse([0,1,2,3,4],3));
+</script>

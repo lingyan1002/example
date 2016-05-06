@@ -1,0 +1,31 @@
+<script type="text/javascript">
+	/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {boolean}
+ */
+var isSameTree = function(p, q) {
+    return compare(p,q);
+};
+function compare(p,q){
+     if(p == null && q == null){
+        return true;
+    }else if(p == null || q == null){
+        return false;
+    }else{
+        if(p.val !== q.val){
+            return false;
+        }
+        var left = compare(p.left,q.left);
+        var right = compare(p.right,q.right);
+        return left&&right;
+    }
+}
+</script>

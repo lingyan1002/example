@@ -1,0 +1,23 @@
+<script type="text/javascript">
+	/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isPowerOfTwo = function(n) {
+    if(n < 0){
+        return false;
+    }
+    var flag = 1;
+    var count = 0;
+    while(flag){
+        if(n & flag){
+            count++;
+            if(count > 1){
+                return false;
+            }
+        }
+        flag <<= 1;
+    }
+    return count == 1;
+};
+</script>

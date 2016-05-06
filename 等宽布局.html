@@ -1,0 +1,29 @@
+<style type="text/css">
+ .box div {
+  color: #FFF;
+  height: 100%;
+  float: left;
+ }
+</style>
+<script>
+ window.onload = function(){
+  var box = document.getElementById( 'box' ),
+   Elements = box.getElementsByTagName( 'div' ),
+   width = box.currentStyle ? box.currentStyle['width'] : document.defaultView.getComputedStyle(box,false)['width'];
+  width = parseInt(width);
+  for( var i = Elements.length - 1; i >= 0; i-- ){
+   Elements[i].style.width = width / Elements.length + 'px';
+  };
+ }
+</script>
+<div class="box" id="box">
+ <div style="background: #666;">
+  <span>第1列</span>
+ </div>
+ <div style="background: #444;">
+  <span>第2列</span>
+ </div>
+ <div style="background: #222;">
+  <span>第3列</span>
+ </div>
+</div>

@@ -1,0 +1,38 @@
+<script type="text/javascript">
+function twoSum1(a,sum){
+  var tmp = a.slice(0);
+  a.sort(function(m,n){
+    return m-n;
+  });
+  var result = [];
+  var j = a.length-1;
+  var i = 0;
+  if(a[0]>0 && a[0]>sum)return result;
+  while(i < j){
+    if((a[i]+a[j]) == sum){
+      result[0] = tmp.indexOf(a[i]);
+      result[1] = tmp.lastIndexOf(a[j]);
+      break;
+    }else if((a[i]+a[j]) > sum){
+      j--;
+    }else{
+      i++;
+    }
+  }
+  return result;
+}
+
+function twoSum2(nums, target) {
+    var output = [];
+        for(var i = 0; i < nums.length; i++){
+            for(var j = i+1; j < nums.length; j++){
+                if(nums[i]+nums[j] == target){
+                    output[0]=i;
+                    output[1]=j;
+                    break;
+                }
+            }
+        }
+        return output;    
+};
+</script>

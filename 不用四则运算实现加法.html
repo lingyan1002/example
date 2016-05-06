@@ -1,0 +1,12 @@
+<script type="text/javascript">
+function add(a,b){
+  var m,n;
+  do{
+    m = a^b;
+    n = (a&b)<<1;
+    a = m;
+    b = n;
+  }while(b != 0);
+  return m;
+}
+</script>

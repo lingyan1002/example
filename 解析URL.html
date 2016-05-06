@@ -1,0 +1,13 @@
+<script type="text/javascript">
+	var a = "http：//game.weixin.qq.com/index.html?a=1&b=2&c=&d=xxx&e";
+var b = a.split("?")[1];
+var object = {};
+b.replace(/([^?=&]+)(=?)([^?=&]*)/g,function(a,$1,$2,$3){
+  if($2){
+      object[$1] = $3;
+  }else{
+    object[$1] = undefined;
+  }
+  return a;
+})
+</script>

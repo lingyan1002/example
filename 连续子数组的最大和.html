@@ -1,0 +1,27 @@
+<script type="text/javascript">
+function sum(a){
+  if(a.length == 0){
+    return;
+  }
+  var s = a[0];
+  var cur = a[0];
+  for(var i = 1; i < a.length; i++){
+    if(cur <= 0){
+      cur = a[i];
+    }else{
+      cur += a[i];
+    }
+    if(s < cur){
+      s = cur;
+    }
+  }
+  return s;
+}
+var a = [];
+var length = 20;
+for(var i = 0; i < length; i++){
+  a.push(Math.floor(Math.random()*10-4));
+}
+console.log(a);
+sum(a);
+</script>

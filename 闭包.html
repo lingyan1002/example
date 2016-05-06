@@ -1,0 +1,13 @@
+<script type="text/javascript">
+function a(x){
+	var y = x;
+  function b(){
+   alert(y+1);
+  }
+  return b;
+}
+var c1 = a(1), c2 = a(2), c3 = a(3);
+c1();//2
+c2();//3
+c3();//4
+</script>

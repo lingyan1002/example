@@ -1,0 +1,30 @@
+<!--
+<style>
+li:nth-child(even){
+	color:red;
+}
+li:nth-child(odd){
+	color:blue;
+}
+</style>
+-->
+<body>
+<ul>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+</ul>
+<script type="text/javascript">
+window.onload = function(){
+	var list = document.getElementsByTagName("li");
+	for(var i = 0; i < list.length; i++){
+		if(i%2 == 0){
+			list[i].style.color = "red";
+		}else{
+			list[i].style.color = "blue";
+		}
+	}		
+}
+</script>
+</body>

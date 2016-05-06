@@ -1,13 +1,21 @@
 <script type="text/javascript">
-	function A(){
-  this.name:'aa';
+function A(){
+  this.name='aa';
   this.get = function(){
     return this.name;
   };
 }
 function B(){
   A.call(this);
+  this.set = function(){
+    this.name = 'bb';
+  }
 }
+var a = new A();
 var b = new B();
-console.log(b.get());
-</script>>
+//a.set();报错，父类不能直接调用子类的方法
+b.set.apply(a);
+console.log(a.get());//bb
+b.set();
+console.log(b.get());//bb
+</script>

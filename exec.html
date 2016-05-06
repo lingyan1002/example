@@ -1,0 +1,8 @@
+<script type="text/javascript">
+var pattern = /java/g;
+var text = "javascript is more fun than java!";
+var result;
+while((result = pattern.exec(text))!==null){
+  alert("Matched "+result[0]+" at position "+ result.index+" " + pattern.lastIndex);
+}
+</script>

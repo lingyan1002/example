@@ -1,0 +1,30 @@
+<script type="text/javascript">
+//从第一个字符串中删除第二个字符串中出现的字符
+function deletestr(str1,str2){
+  var a = {};
+  for(var i = 0; i < str2.length; i++){
+    a[str2[i]] = true;
+  }
+  for(var j = 0; j < str1.length; j++){
+    if(a[str1[j]]){
+      str1 = str1.substr(0,j)+str1.substr(j+1);
+    }
+  }
+  return str1;
+}
+
+
+
+//删除字符串中的重复字符
+function deletestr(str){
+  var a = {};
+  for(var j = 0; j < str.length; j++){
+    if(a[str[j]]){
+      str = str.substr(0,j)+str.substr(j+1);
+    }else{
+      a[str[j]] = true;
+    }
+  }
+  return str;
+}
+</script>
