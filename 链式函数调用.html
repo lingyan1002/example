@@ -1,0 +1,22 @@
+<script type="text/javascript">
+	function Person(){
+		var flag = 1;
+		this.eat = function(s){
+			while(flag !== 1){}
+			console.log(s);
+			return this;
+		};
+		this.sleep = function(num){	
+		var that = this;		
+			flag = -1;
+			setTimeout(function(){
+				flag = 1;	
+			//	return that;			
+			},num);
+			return this;
+			
+		}
+	}
+	var a = new Person();
+	a.eat(1).eat(2).sleep(3).eat(4);
+</script>
