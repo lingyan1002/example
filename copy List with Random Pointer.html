@@ -1,0 +1,45 @@
+<script type="text/javascript">
+	/**
+ * Definition for singly-linked list with a random pointer.
+ * function RandomListNode(label) {
+ *     this.label = label;
+ *     this.next = this.random = null;
+ * }
+ */
+
+/**
+ * @param {RandomListNode} head
+ * @return {RandomListNode}
+ */
+var copyRandomList = function(head) {
+    if(head == null){
+        return null;
+    }
+    var l = new RandomListNode(0);
+    var p = l;
+    var h = head;
+    while(h){
+        var node = new RandomListNode(h.label);
+        var tmp = h.next;
+        h.next = node;
+        node.next = tmp;
+        h = tmp;
+    }
+    h = head;
+    while(h){
+        if(h.random !== null){
+            h.next.random = h.random.next;
+        }
+        h = h.next.next;
+    }
+    h = head;
+    while(h){
+        n = h.next;
+        p.next = n;
+        p = n;
+        h.next = n.next;
+        h = n.next;
+    }
+    return l.next;
+};
+</script>

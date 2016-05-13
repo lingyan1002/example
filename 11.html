@@ -1,0 +1,54 @@
+<script type="text/javascript">
+/**
+ * @param {string} a
+ * @param {string} b
+ * @return {string}
+ */
+	var addBinary = function(a, b) {
+    var result = "";
+    var lena = a.length;
+    var lenb = b.length;
+    if(lena == 0){
+        return b;
+    }
+    if(lenb == 0){
+        return a;
+    }
+    var indexa = lena - 1;
+    var indexb = lenb - 1;
+    var c = 0;
+    while(indexa >= 0 && indexb >= 0){
+        var sum = parseInt(a[indexa])+parseInt(b[indexb])+c;
+        c = Math.floor(sum/2);
+        sum = sum%2;
+        result = sum+result;
+        indexa--;
+        indexb--;
+    }
+    if(indexa < 0 && indexb < 0){
+        if(c != 0){
+            result = c+result;
+            return result;
+        }
+    }
+    while(indexa >= 0){
+        var sum = parseInt(a[indexa])+c;
+        c = Math.floor(sum/2);
+        sum = sum%2;
+        result = sum+result;
+        indexa--;
+    }
+    while(indexb >= 0){
+        var sum = parseInt(b[indexb])+c;
+        c = Math.floor(sum/2);
+        sum = sum%2;
+        result = sum+result;
+        indexb--;
+    }
+    if(c != 0){
+        result = c+result;
+    }
+    return result;
+};
+addBinary("1","1")
+</script>

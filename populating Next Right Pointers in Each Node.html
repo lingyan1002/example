@@ -1,0 +1,40 @@
+<script type="text/javascript">
+	/**
+ * Definition for binary tree with next pointer.
+ * function TreeLinkNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = this.next = null;
+ * }
+ */
+
+/**
+ * @param {TreeLinkNode} root
+ * @return {void} Do not return anything, modify tree in-place instead.
+ */
+ //默认next为null，所以每层最后一个节点的next不用重新置为null
+var connect = function(root) {
+    if(root == null){
+        return;
+    }
+    var p = root;
+    var first = null;//记录下一层的第一个左子树
+    while(p){
+        if(first == null){
+            first = p.left;
+        }
+        if(p.left){
+            p.left.next = p.right;
+        }else{
+            break;
+        }
+        if(p.next){
+            p.right.next = p.next.left;
+            p = p.next;//遍历整层
+        }else{
+            p = first;
+            first = null;
+        }
+    }
+    
+};
+</script>

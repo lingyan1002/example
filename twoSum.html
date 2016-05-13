@@ -35,4 +35,25 @@ function twoSum2(nums, target) {
         }
         return output;    
 };
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function (nums,target){  
+  var result = [];
+  var map = {};
+  for(var i = 0; i < nums.length; i++){
+    var tmp = target-nums[i];
+    if(map[tmp]){
+      result[0] = map[tmp];
+      result[1] = i;
+    }else{
+      map[nums[i]] = i;
+    }
+  }
+  return result;
+};
 </script>

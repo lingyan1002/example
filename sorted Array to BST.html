@@ -1,0 +1,28 @@
+<script type="text/javascript">
+	/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+var sortedArrayToBST = function(nums) {
+    return arrayToBST(nums);
+};
+function arrayToBST(nums){
+    if(nums.length == 0){
+        return null;
+    }
+    var len = nums.length;
+    var mid = Math.floor(len/2);
+    var root = new TreeNode();
+    root.val = nums[mid];
+    root.left = arrayToBST(nums.slice(0,mid));
+    root.right = arrayToBST(nums.slice(mid+1));
+    return root;
+}
+</script>

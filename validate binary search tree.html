@@ -1,0 +1,58 @@
+<script type="text/javascript">
+	/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isValidBST = function(root) {
+    var result = [];
+    inorder(root,result);
+    for(var i = 0; i < result.length-1; i++){
+        if(result[i] >= result[i+1]){       //注意等于这种情况
+            return false;
+        }
+    }
+    return true;
+};
+function inorder(root, result){
+    if(root == null){
+        return ;
+    }
+    inorder(root.left, result);
+    result.push(root.val);
+    inorder(root.right, result);
+}
+
+
+
+
+
+
+//递归
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isValidBST = function(root) {
+    return validate(root, -Number.MAX_VALUE, Number.MAX_VALUE);
+};
+function validate(root, min, max){
+    if(root == null){
+        return true;
+    }
+    return (root.val < max) && (root.val > min) && validate(root.left, min, root.val) && validate(root.right, root.val, max);
+}
+</script>

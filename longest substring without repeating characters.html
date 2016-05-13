@@ -1,0 +1,23 @@
+<script type="text/javascript">
+	/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    var string = "";
+    var length = 0;
+    for(var i = 0; i < s.length;i++){
+        for(var j = 0;j < string.length; j++){
+            if(s[i]==string[j]){
+                string = string.substr(j+1);
+                break;
+            }
+        }
+        string+=s[i];
+        if(length<string.length){
+            length = string.length;
+        }
+    }
+    return length;
+};
+</script>
